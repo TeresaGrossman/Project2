@@ -197,3 +197,8 @@ iframe {
 #vid-btn {
     display: block;
 }
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
