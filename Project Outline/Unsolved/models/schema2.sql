@@ -7,7 +7,9 @@ CREATE TABLE users(
   userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   firstName VARCHAR(45) NULL,
   lastName VARCHAR(45) NULL,
-  emailAddress VARCHAR (65) NULL
+  emailAddress VARCHAR (65) NULL,
+  password INT(10),
+  userName VARCHAR(45)
 );
 
 CREATE TABLE blogs(
@@ -23,26 +25,26 @@ CREATE TABLE blogs(
     movieRating INT (1) NULL
 );
 
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Matthew", "Huberty", "matthew.huberty@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Shirin", "Boroujeni", "shirin.boroujeni@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Trevor", "Knapp", "trevor.knapp.1991@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Teresa", "Grossman", "tmg.coder@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Charlie", "Brown", "charlie.brown@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Lucy", "Van Pelt", "lucy.vanpelt@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Pig", "Pen", "pig.pen@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Sally", "Brown", "sally.brown@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Peppermint", "Patty", "peppermint.patty@gmail.com");
-INSERT INTO users (firstName, lastName, emailAddress)
-VALUES ("Linus", "VanPelt", "linus.vanpelt@gmail.com");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Matthew", "Huberty", "matthew.huberty@gmail.com", 1234, "Grumpy");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Shirin", "Boroujeni", "shirin.boroujeni@gmail.com", 2345, "Happy");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Trevor", "Knapp", "trevor.knapp.1991@gmail.com", 3456, "Bashful");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Teresa", "Grossman", "tmg.coder@gmail.com", 4567, "Sneezy");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Charlie", "Brown", "charlie.brown@gmail.com", 5678, "Dopey");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Lucy", "Van Pelt", "lucy.vanpelt@gmail.com", 6789, "Bossy");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Pig", "Pen", "pig.pen@gmail.com", 1357, "Smelly");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Sally", "Brown", "sally.brown@gmail.com", 2468, "Sleepy");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Peppermint", "Patty", "peppermint.patty@gmail.com", 3579, "Doc");
+INSERT INTO users (firstName, lastName, emailAddress, password, userName)
+VALUES ("Linus", "VanPelt", "linus.vanpelt@gmail.com", 4680, "Mozart");
 
 INSERT INTO blogs  (parent_id,moviePost, omdbMovieID, omdbMovieName, movieRating) VALUES(2, "suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede", 6787072, "Last Metro, The (Dernier mÃ©tro, Le)", 5);
 INSERT INTO blogs  (parent_id,moviePost, omdbMovieID, omdbMovieName, movieRating) VALUES(10, "sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus", 7084602, "Pit and the Pendulum, The", 3);
