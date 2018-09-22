@@ -57,7 +57,7 @@ $(document).on("click", ".movie-row", function () {
         });
 
         //remove background image
-        $(".background").css("background-image", "url('./assets/images/white.jpg')");
+        $(".background").css("background-image", "url('../styles/images/white.jpg')");
 
         //remove 'selected' class from row
         $(".movie-row").removeClass("selected");
@@ -111,7 +111,7 @@ function searchTitle() {
     $("#result-count").empty();
     $("#review-section").empty();
     //remove background image
-    $(".background").css("background-image", "url('./assets/images/white.jpg')");
+    $(".background").css("background-image", "url('../styles/images/white.jpg')");
     //reset video source
     videoSrc = "";
     //configure search URL
@@ -144,7 +144,7 @@ function nowPlaying() {
     $("#result-count").empty();
     $("#review-section").empty();
     //remove background image
-    $(".background").css("background-image", "url('./assets/images/white.jpg')");
+    $(".background").css("background-image", "url('../styles/images/white.jpg')");
     //reset video source
     videoSrc = "";
     //configure search URL
@@ -186,7 +186,7 @@ function getDetails(movieID) {
         }
         //otherwise background to white
         else {
-            $(".background").css("background-image", "url('./assets/images/white.jpg')");
+            $(".background").css("background-image", "url('../styles/images/white.jpg')");
         }
         //define video URL if exists
         if (movieDetails.videos.results[0]) {
@@ -214,7 +214,7 @@ function renderMovieList() {
         //define image URL if available otherwise load default image
         var imgURL = "";
         if (imgPath) { imgURL = imgBaseURL + imgPath; }
-        else { imgURL = "./assets/images/clapperboard_poster.png"; }
+        else { imgURL = "../styles/images/clapperboard_poster.png"; }
 
         //create HTML elements
         var movieRow = $("<div>").addClass("movie-row").attr("id", "row-" + i).attr("data-movie-id", movieID);
@@ -334,9 +334,9 @@ function displayRatings() {
     //map review section element to js variable
     var ratingSection = $("<div>").attr("id", "rating-section");
     //crate icon image elelments
-    var imdbIcon = $("<img>").addClass("icon").attr("src", "./assets/images/imdb_icon.jpg");
-    var metaIcon = $("<img>").addClass("icon").attr("src", "./assets/images/meta_icon.jpg");
-    var rottenIcon = $("<img>").addClass("icon").attr("src", "./assets/images/rotten_icon.png");
+    var imdbIcon = $("<img>").addClass("icon").attr("src", "../styles/images/imdb_icon.jpg");
+    var metaIcon = $("<img>").addClass("icon").attr("src", "../styles/images/meta_icon.jpg");
+    var rottenIcon = $("<img>").addClass("icon").attr("src", "../styles/images/rotten_icon.png");
     //populate available ratings and icons
     for (let i = 0; i < movieRatings.length; i++) {
         //create rating div
