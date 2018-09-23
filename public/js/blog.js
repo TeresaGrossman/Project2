@@ -26,8 +26,8 @@ $("#blog-submit").on("click", function(event) {
         row.append("<p>" + newBlog.omdbMovieName +  "</p>");
         row.append("<p>" + newBlog.userName + "</p>");
         row.append("<p>" + newBlog.moviePost + "</p>");
-        row.append("<p>" + newChirp.movieRating + "</p>");
-        row.append("<p>At " + moment(newChirp.created_at).format("h:mma on dddd") + "</p>");
+        row.append("<p>" + newBlog.movieRating + "</p>");
+        // row.append("<p>At " + moment(newBlog.created_at).format("h:mma on dddd") + "</p>");
   
         $("#blog-area").prepend(row);
   
@@ -41,7 +41,7 @@ $("#blog-submit").on("click", function(event) {
   });
   
   // When the page loads, grab all of our chirps
-  $.get("/api/blog", function(data) {
+  $.get("/api/blogs", function(data) {
   
     if (data.length !== 0) {
   
@@ -54,7 +54,7 @@ $("#blog-submit").on("click", function(event) {
         row.append("<p>" + data[i].userName + "</p>");
         row.append("<p>" + data[i].moviePost + "</p>");
         row.append("<p>" + data[i].movieRating + "</p>");
-        row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+        // row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
   
         $("#blog-area").prepend(row);
   

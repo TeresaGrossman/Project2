@@ -13,8 +13,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/views/blog.html"));
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.sendFile("404");
-  });
+  // // Render 404 page for any unmatched routes
+  // app.get("*", function(req, res) {
+  //   res.sendFile("404");
+  // });
 };
