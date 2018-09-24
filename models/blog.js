@@ -3,13 +3,12 @@ module.exports = function(sequelize, DataTypes) {
   var Blog = sequelize.define("Blog", {
     // Giving the Blog model a name of type STRING
     moviePost: DataTypes.STRING,
+    userName: DataTypes.STRING,
     omdbMovieID: DataTypes.INTEGER,
     omdbMovieName: DataTypes.STRING,
-    movieRating: DataTypes.INTEGER,
+    movieRating: DataTypes.INTEGER
     // created_at: Sequelize.DATE
   });
-  //for unkown column 'id' in fieldlist
-  //Blog.removeAttribute("id");
 
   // Blog.associate = function(models) {
   //   // We're saying that a Post should belong to an Author
