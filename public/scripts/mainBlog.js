@@ -282,10 +282,21 @@ function renderDetails() {
 }
 //
 function addDetailContent(div) {
-    //User Blog Title
+    var cms = $("#cms");
+    //Review Title
     var reviewTitle = $("<h3>").addClass("review-title").html("Clapper Reviews");
     div.append(reviewTitle);
 
+    //TO SHOW TMDB REVIEWS (just for example)
+    if (movieDetails.reviews.results.length !== 0) {
+        for (let i = 0; i < movieDetails.reviews.results.length && i < 3; i++) {
+            var movieReview = movieDetails.reviews.results[i].content;
+            var reviews = $("<div>").addClass("review").html(movieReview);
+            div.append(reviews);
+        }
+    } else {
+        div.html("There are no current blogs, Post one!");
+        };
     //Add blog button
     var blogBtn = $("<button>").addClass("btn btn-secondary mx-auto mb-3").attr("id", "blog-btn").html("Add Review");
     div.append(blogBtn);
@@ -295,10 +306,9 @@ function addDetailContent(div) {
         $("#cms").toggle();
         div.append(cms);
     });
-    
 
-    // $("#blog-btn").click(function() { $("#cms").show(); });
-    // div.append(cms);
+//=====GET BLOG DB INFO======
+
 
     //animate detail info entrance
     anime({
