@@ -43,5 +43,6 @@ $("#blog-submit").on("click", function(event) {
         $("#blog-area").prepend(row);
       }
     }
+    
   });
   
