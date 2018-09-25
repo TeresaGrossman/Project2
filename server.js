@@ -1,7 +1,6 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
-
 var db = require("./models");
 
 var app = express();
@@ -24,8 +23,27 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+
+// JUST FOR A MINUTE!!!!!!!!
+syncOptions.force = true;
+
+
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
+  
+  db.Users.Create({
+      firstName:"Ron",
+      lastName: "chambers",
+      emailAddress: "ads@adsf.com",
+      password:  "asdfads",
+      userName: "rgc1234"
+  }).then(function(dbUser){
+      console.log(dbUser);
+  });
+  
+  process.exit();
+
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
