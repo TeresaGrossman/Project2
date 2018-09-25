@@ -56,7 +56,11 @@
         </div>
         <div class="output">
             <div id="summary-section"></div>
+            <div id="blog-area"></div>
             <div class="sidebar">
+                    <!-- <div id="review-section"></div> -->
+                <!--blog display-->
+                
             </div>
         </div>
     </div>
@@ -66,14 +70,13 @@
     <!------To Test Blogs----->
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <form id="cms">
                     <div class="form-group">
                         <label for="title">Blog:</label>
-                        <input placeholder="omdbMovieName" type="text" class="form-control" id="omdbMovieName">
-                        <input placeholder="userName" type="text" class="form-control" id="userName">
-                        <label for="body"></label>
-                        <textarea placeholder="moviePost" class="form-control" rows="10" id="moviePost"></textarea>
+                        <input placeholder="Movie" type="text" class="form-control" id="omdbMovieName">
+                        <input placeholder="User Name" type="text" class="form-control" id="userName">
+                        <textarea placeholder="Thoughts..." class="form-control" rows="10" id="moviePost"></textarea>
                         <label for="exampleSelect1">movieRating</label>
                         <select class="form-control" id="movieRating">
                             <option>1</option>
@@ -82,19 +85,19 @@
                             <option>4</option>
                             <option>5</option>
                         </select>
-                        <button type="submit" class="btn btn-success" id="blog-submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="blog-submit">Submit</button>
                     </div>
                 </form>
             </div>
 
             <!------To Test Blogs Showing Up-------->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-8">
                     <div class="blog-container">
-                        THERE SHOULD BE BLOGS HERE
+                         <div id="blog-area"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -102,8 +105,10 @@
 
         <!-- JavaScript Files-->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <!-- Moment.js -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
         <script src="../scripts/anime.min.js"></script>
-        <script src="../scripts/main.js"></script>
+        <script src="../scripts/mainBlog.js"></script>
         <script src="../js/blog.js"></script>
 </body>
 

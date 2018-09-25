@@ -1,5 +1,6 @@
 //Dependencies
 var path = require("path");
+
 var db = require("../models");
 var path = require("path");
 
@@ -18,7 +19,6 @@ module.exports = function(app) {
   app.get("/signup", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/signup.html"));
   });
-
   // blog route loads blog.html
   app.get("/blog", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/blog.html"));

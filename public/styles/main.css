@@ -121,6 +121,13 @@ body {
     padding: 1rem;
 }
 
+#blog-area {
+    opacity: 0;
+    position:sticky;
+    top: 0;
+    padding: 1rem;
+}
+
 .summary {
     text-align: justify;
 }
@@ -154,6 +161,11 @@ body {
 #rating-section {
     display: flex;
     justify-content: center;
+}
+
+
+#cms {
+    display: none;
 }
 
 .rating {
@@ -198,6 +210,10 @@ iframe {
     display: block;
 }
 
+#blog-btn {
+    display: block;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
@@ -205,3 +221,4 @@ form.login {
 .nav-item-right{
     float: right;
 }
+

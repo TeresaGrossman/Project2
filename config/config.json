@@ -2,7 +2,8 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "movieblog",
+
+    "database": "movieBlog",
     "host": "localhost",
     "dialect": "mysql"
   },

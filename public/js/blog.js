@@ -1,71 +1,47 @@
-$(document).ready(function() {
-
-//Where API should appear
-var blogContainer = $(".blog-container");
-
-//Get Blogs on page load
-getBlogs();
-
-// Get references to page elements
-var omdbMovieName = $("#omdbMovieName");
-var moviePost = $("#moviePost");
-var userName = $("#userName");
-var movieRating = $("#movieRating");
-
-var API = {
-    getBlogs: function() {
-      return $.ajax({
-        url: "api/blog",
-        type: "GET"
+// When user clicks blog submit
+$("#blog-submit").on("click", function(event) {
+    event.preventDefault();
+    // Make new Blog object
+    var newBlog = {
+        omdbMovieName: $("#omdbMovieName").val().trim(),
+        moviePost: $("#moviePost").val().trim(),
+        userName: $("#userName").val().trim(),
+        movieRating: $("#movieRating").val(),
+        created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+    };
+    console.log(newBlog);
+    // Send an AJAX POST-request with jQuery
+    $.post("/api/blogs", newBlog)
+      // On success, run the following code
+      .then(function() {
+        var row = $("<div>");
+        row.addClass("blogs");
+        row.append("<p>" + newBlog.omdbMovieName +  "</p>");
+        row.append("<p>" + newBlog.userName + "</p>");
+        row.append("<p>" + newBlog.moviePost + "</p>");
+        row.append("<p>" + newBlog.movieRating + "</p>");
+        row.append("<p>At " + moment(newBlog.created_at).format("h:mma on dddd") + "</p>");
+        $("#blog-area").append(row);
       });
-    },
-    postBlog: function(data) {
-        return $.ajax({
-          headers: {
-            "Content-Type": "application/json"
-          },
-          type: "POST",
-          url: "api/blog",
-          data: JSON.stringify(data)
-        });
-      },
-    updateBlog: function(blog)
-     $.ajax({
-        method: "PUT",
-        url: "/api/blog",
-        data: todo
-      }).then(getTodos);
+    // Empty each input box by replacing the value with an empty string
+    $("#omdbMovieName").val("");
+    $("#userName").val("");
+    $("#moviePost").val("");
+    $("#movieRating").val("");
+  });
+  // When the page loads, grab all of our blogs
+  $.get("/api/blogs", function(data) {
+    if (data.length !== 0) {
+      for (var i = 0; i < data.length; i++) {
+        var row = $("<div>");
+        row.addClass("blogs");
+        row.append("<p>" + data[i].omdbMovieName + "</p>");
+        row.append("<p>" + data[i].userName + "</p>");
+        row.append("<p>" + data[i].moviePost + "</p>");
+        row.append("<p>" + data[i].movieRating + "</p>");
+        row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+        $("#blog-area").prepend(row);
+      }
     }
+  });
   
-  };
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshBlog = function() {
-    API.getBlog().then(function(data) {
-      var $examples = data.map(function(example) {
-        var $a = $("<a>")
-          .text(example.text)
-          .attr("href", "/example/" + example.id);
-  
-        var $li = $("<li>")
-          .attr({
-            class: "list-group-item",
-            "data-id": example.id
-          })
-          .append($a);
-  
-        var $button = $("<button>")
-          .addClass("btn btn-danger float-right delete")
-          .text("ｘ");
-  
-        $li.append($button);
-  
-        return $li;
-      });
-  
-      $exampleList.empty();
-      $exampleList.append($examples);
-    });
-  };
-
-
