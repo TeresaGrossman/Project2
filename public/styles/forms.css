@@ -1,3 +1,9 @@
-container{
-    background: radial-gradient(#2E86C1,  #85C1E9, #D6EAF8);
-  }
+body {
+  background: radial-gradient(#2E86C1,  #85C1E9, #D6EAF8);
+}
+.container{
+  background: transparent;
+}
+h2{
+  color: darkblue;
+}
