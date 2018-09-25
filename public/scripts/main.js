@@ -283,7 +283,7 @@ function renderDetails() {
 
 function addDetailContent(div) {
     //Add tagline and oveview
-    var vidBtn = $("<button>").addClass("btn btn-secondary mx-auto mb-3").attr("id", "vid-btn").html("Play Trailer");
+    var vidBtn = $("<button>").addClass("btn btn-primary mx-auto mb-3").attr("id", "vid-btn").html("Play Trailer");
     var tagline = $("<div>").addClass("tagline").html(movieDetails.tagline);
     var summary = $("<div>").addClass("summary").html(movieDetails.overview);
 
