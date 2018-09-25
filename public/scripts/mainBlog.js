@@ -287,8 +287,7 @@ function addDetailContent(div) {
     var reviewTitle = $("<h3>").addClass("review-title").html("Clapper Reviews");
     div.append(reviewTitle);
 
-    var blogDisplay = $("<div>").addClass("blog-display");
-
+    //var blogDisplay = $("<div>").addClass("blog-display");
     //TO SHOW TMDB REVIEWS (just for example)
     if (movieDetails.reviews.results.length !== 0) {
         for (let i = 0; i < movieDetails.reviews.results.length && i < 3; i++) {
@@ -302,31 +301,29 @@ function addDetailContent(div) {
     //Add blog button
     var blogBtn = $("<button>").addClass("btn btn-secondary mx-auto mb-3").attr("id", "blog-btn").html("Add Review");
     div.append(blogBtn);
-    //show form on review click
-    // $(div).ready(function(){
-    $("#blog-btn").click(function(){
-        $("#cms").toggle();
-        div.append(cms);
-    });
-    $("#blog-submit").click(function(){
-        $("#cms").toggle();
-        $("blog-display").append();
-    });
+    
+    // ADD PROPERTY TO BUTTON ("onclick") that grabs movieID
+    // var queryURL = movieURL + movieId + "?api_key=" + apiKeyTMDb;
+    //     //Get movieID
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         movieId = response.movieID;
+    //     }); console.log(movieId);
+        
+        //Blog Button that toggles form
+        $("#blog-btn").click(function(){
+            $("#cms").toggle();
+            div.append(cms);
+        });
+        $("#blog-submit").click(function(){
+            //toggles form off when clicked
+            $("#cms").toggle();
+            $("blog-display").append();
+        });
 
 //=====GET BLOG DB INFO======
-function displayBlogs() {
-    var url = window.location.search;
-    var movieId;
-        if (url.indexOf("?omdbMovieName=") !== -1) {
-            movieId = url.split("=")[1];
-            getBlogs(movieId);
-        }
-        // If there's no authorId we just get all posts as usual
-        else {
-            getBlogs();
-        }
-        }
-
 
     //animate detail info entrance
     anime({
