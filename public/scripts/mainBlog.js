@@ -287,6 +287,8 @@ function addDetailContent(div) {
     var reviewTitle = $("<h3>").addClass("review-title").html("Clapper Reviews");
     div.append(reviewTitle);
 
+    var blogDisplay = $("<div>").addClass("blog-display");
+
     //TO SHOW TMDB REVIEWS (just for example)
     if (movieDetails.reviews.results.length !== 0) {
         for (let i = 0; i < movieDetails.reviews.results.length && i < 3; i++) {
@@ -306,8 +308,24 @@ function addDetailContent(div) {
         $("#cms").toggle();
         div.append(cms);
     });
+    $("#blog-submit").click(function(){
+        $("#cms").toggle();
+        $("blog-display").append();
+    });
 
 //=====GET BLOG DB INFO======
+function displayBlogs() {
+    var url = window.location.search;
+    var movieId;
+        if (url.indexOf("?omdbMovieName=") !== -1) {
+            movieId = url.split("=")[1];
+            getBlogs(movieId);
+        }
+        // If there's no authorId we just get all posts as usual
+        else {
+            getBlogs();
+        }
+        }
 
 
     //animate detail info entrance
