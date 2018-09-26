@@ -3,14 +3,14 @@ console.log("hello!");
 $(document).ready(function() {
   // Getting references to our form and input
   var signUpForm = $("form.signup");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
-  var firstNameInput = $("input#firstName-input");
-  var lastNameInput = $("input#lastName-input");
-  var userNameInput = $("input#userName-input");
+  var emailInput = $("#email-input");
+  var passwordInput = $("#password-input");
+  var firstNameInput = $("#firstName-input");
+  var lastNameInput = $("#lastName-input");
+  var userNameInput = $("#userName-input");
 
   // When the signup button is clicked, we validate the none of the input fields blank
-  signUpForm.on("submit", function (event) {
+  signUpForm.on("submit", function(event) {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -19,7 +19,7 @@ $(document).ready(function() {
       lastName: lastNameInput.val().trim(),
       userName: userNameInput.val().trim()
     };
-
+    
     if (
       !userData.email ||
       !userData.password ||
@@ -30,13 +30,7 @@ $(document).ready(function() {
       return;
     }
     // If all of the input fields have data run the signUpUser function
-    signUpUser(
-      userData.email,
-      userData.password,
-      userData.firstName,
-      userData.lastName,
-      userData.userName
-    );
+    signUpUser(userData.email, userData.password, userData.firstName, userData.lastName, userData.userName);
     emailInput.val("");
     passwordInput.val("");
     firstNameInput.val("");
@@ -56,12 +50,10 @@ $(document).ready(function() {
     })
       .then(function(data) {
         window.location.replace(data);
-
         //If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
   }
-  console.log(lastNameInput);
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
