@@ -1,6 +1,6 @@
 console.log("hello!");
 
-$(document).ready(function () {
+$(document).ready(function() {
   // Getting references to our form and input
   var signUpForm = $("form.signup");
   var emailInput = $("input#email-input");
@@ -20,7 +20,8 @@ $(document).ready(function () {
       userName: userNameInput.val().trim()
     };
 
-    if (!userData.email ||
+    if (
+      !userData.email ||
       !userData.password ||
       !userData.firstName ||
       !userData.lastName ||
@@ -53,10 +54,12 @@ $(document).ready(function () {
       lastName: lastName,
       userName: userName
     })
-  .then(function(data) {
+      .then(function(data) {
         window.location.replace(data);
-    // If there's an error, handle it by throwing up a bootstrap alert
-    }).catch(handleLoginErr);
+
+        //If there's an error, handle it by throwing up a bootstrap alert
+      })
+      .catch(handleLoginErr);
   }
   console.log(lastNameInput);
   function handleLoginErr(err) {
