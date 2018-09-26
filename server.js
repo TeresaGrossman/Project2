@@ -14,6 +14,7 @@ app.use(express.static("public"));
 
 // Routes
 require("./routes/blog-apiRoutes")(app);
+require("./routes/user-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };

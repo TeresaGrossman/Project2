@@ -30,6 +30,9 @@ var movieDetails = {};
 var movieRatings = [];
 var videoSrc = "";
 
+//Added Variables
+var cms = $("#cms");
+
 //execute search when search button is clicked (functions defined below)
 $("#now-playing-btn").on("click", nowPlaying);
 
@@ -41,7 +44,7 @@ $(document).on("click", ".movie-row", function () {
     //if clicked row already selected then unselect
     if ($(this).hasClass("selected")) {
         //reset css for all rows
-        $(".movie-row").css("opacity", "1"); 
+        $(".movie-row").css("opacity", "1");
         $(this).css("border-color", "#ddd");
 
         //animiate movie detail exit
@@ -77,11 +80,10 @@ $(document).on("click", ".movie-row", function () {
         $(".movie-row").removeClass("selected");
         $(this).addClass("selected");
         //reset video source
-        videoSrc = "";        
+        videoSrc = "";
         //get movie details
         getDetails($(this).attr("data-movie-id"));
     }
-
 });
 
 //display video when any movie details are clicked
@@ -192,7 +194,7 @@ function getDetails(movieID) {
         if (movieDetails.videos.results[0]) {
             videoSrc = "https://www.youtube.com/embed/" + movieDetails.videos.results[0].key + "?autoplay=1";
         }
-        
+
         //display details
         renderDetails();
     });
@@ -282,51 +284,51 @@ function renderDetails() {
 }
 //
 function addDetailContent(div) {
+    //cms is input form id
     var cms = $("#cms");
-    //Review Title
+    //Review Header
     var reviewTitle = $("<h3>").addClass("review-title").html("Clapper Reviews");
     div.append(reviewTitle);
-
+    //blog display area
     var blogDisplay = $("<div>").addClass("blog-display");
-
+    var selectedMovieID = $(".selected").data("movie-id");
+    var url = "/api/blogs";
+ 
+    if(selectedMovieID){
+      url = "/api/blogs/" + selectedMovieID;
+    }
     //TO SHOW TMDB REVIEWS (just for example)
-    if (movieDetails.reviews.results.length !== 0) {
-        for (let i = 0; i < movieDetails.reviews.results.length && i < 3; i++) {
-            var movieReview = movieDetails.reviews.results[i].content;
+    $.get(url, function(data) {
+        if (data.length !== 0) {
+          for (var i = 0; i < data.length; i++) {
+            var movieReview = data[i].moviePost;
             var reviews = $("<div>").addClass("review").html(movieReview);
             div.append(reviews);
-        }
-    } else {
+          }
+        } else {
         div.html("There are no current blogs, Post one!");
-        };
+    }
+
     //Add blog button
     var blogBtn = $("<button>").addClass("btn btn-secondary mx-auto mb-3").attr("id", "blog-btn").html("Add Review");
     div.append(blogBtn);
-    //show form on review click
-    // $(div).ready(function(){
-    $("#blog-btn").click(function(){
+  //Blog Button that toggles form on
+    $("#blog-btn").click(function () {
         $("#cms").toggle();
-        div.append(cms);
+        var cmsElem = cms.clone();
+        div.append(cmsElem);
     });
-    $("#blog-submit").click(function(){
+    
+    //blog submit toggles form off
+    $("#blog-submit").click(function (event) {
+        //toggles form off when clicked
+        event.preventDefault();
         $("#cms").toggle();
-        $("blog-display").append();
+        $("blog-display").append(blogDisplay);
     });
+});
 
-//=====GET BLOG DB INFO======
-function displayBlogs() {
-    var url = window.location.search;
-    var movieId;
-        if (url.indexOf("?omdbMovieName=") !== -1) {
-            movieId = url.split("=")[1];
-            getBlogs(movieId);
-        }
-        // If there's no authorId we just get all posts as usual
-        else {
-            getBlogs();
-        }
-        }
-
+    //=====GET BLOG DB INFO======
 
     //animate detail info entrance
     anime({

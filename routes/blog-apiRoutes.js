@@ -9,6 +9,17 @@ module.exports = function(app) {
     });
   });
 
+  // Get all Blogs
+  app.get("/api/blogs/:id", function(req, res) {
+    db.Blog.findAll({
+      where: {
+        omdbMovieID: req.params.id
+      }
+    }).then(function(dbBlog) {
+      res.json(dbBlog);
+    });
+  });
+
   // Create a new blog
   app.post("/api/blogs", function(req, res) {
     db.Blog.create(req.body).then(function(dbBlog) {
