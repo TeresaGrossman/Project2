@@ -3,11 +3,11 @@ $(document).on("click", "#blog-submit", function(event) {
   event.preventDefault();
   // Make new Blog object
   var newBlog = {
-    omdbMovieName: $("#omdbMovieName").val().trim(),
+    //omdbMovieName: $("#omdbMovieName").val().trim(),
     moviePost: $("#moviePost").val().trim(),
     userName: $("#userName").val().trim(),
     movieRating: $("#movieRating").val(),
-    created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+    created_at: moment().format("YYYY-MM-DD HH:mm"),
     omdbMovieID: $(".selected").data("movie-id")
   };
   console.log(newBlog);
@@ -41,7 +41,7 @@ $.get("/api/blogs", function(data) {
       row.append("<p>" + data[i].moviePost + "</p>");
       row.append("<p>" + data[i].movieRating + "</p>");
       row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
-      $("#blog-area").prepend(row);
+      $("#blog-area").append(row);
     }
   }
 });
