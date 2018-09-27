@@ -297,12 +297,19 @@ function addDetailContent(div) {
     if(selectedMovieID){
       url = "/api/blogs/" + selectedMovieID;
     }
-    //TO SHOW TMDB REVIEWS (just for example)
+    //TO SHOW User REVIEWS 
     $.get(url, function(data) {
         if (data.length !== 0) {
           for (var i = 0; i < data.length; i++) {
-            var movieReview = data[i].moviePost;
-            var reviews = $("<div>").addClass("review").html(movieReview);
+            var userName = data[i].userName;
+            var movieRating = data[i].movieRating;
+            var reviewDate = moment(data[i].created_at).format("YYYY-MM-DD");
+            var moviePost = data[i].moviePost;
+            var reviews = $("<div>").addClass("card");
+            reviews.append("<u><p><b>" + userName + "</b>" + " says: " + "</u>" +"</p>");
+            reviews.append("<p>" + moviePost + "</p>");
+            reviews.append("<p>" + "Clapper Rating: " + movieRating + "</p>");
+            reviews.append("<small>" + "on: " + reviewDate + "</small>");
             div.append(reviews);
           }
         } else {
@@ -324,7 +331,7 @@ function addDetailContent(div) {
         //toggles form off when clicked
         event.preventDefault();
         $("#cms").toggle();
-        $("blog-display").append(blogDisplay);
+        $("blog-display").prepend(blogDisplay);
     });
 });
 
